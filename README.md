@@ -7,6 +7,7 @@ Materials for a training on workflow tools and best practices for HPC.
 
 * cron
 * [Slurm scheduler & dependencies](https://slurm.schedmd.com/)
+* [hydra](https://hydra.cc/)
 * [Snakemake](https://snakemake.readthedocs.io/en/stable/)
 * [Nextflow](https://www.nextflow.io/)
 * [ACROSS](https://www.acrossproject.eu/across-platform/)
