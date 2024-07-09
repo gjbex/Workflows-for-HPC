@@ -7,7 +7,9 @@ Materials for a training on workflow tools and best practices for HPC.
 
 * cron
 * [Slurm scheduler & dependencies](https://slurm.schedmd.com/)
-* [hydra](https://hydra.cc/)
+* [Hyperqueue](https://github.com/It4innovations/hyperqueue)
+* worker, tools, GNU parallel
+* [Fireworks](https://materialsproject.github.io/fireworks/)
 * [Snakemake](https://snakemake.readthedocs.io/en/stable/)
 * [Nextflow](https://www.nextflow.io/)
 * [ACROSS](https://www.acrossproject.eu/across-platform/)
@@ -15,6 +17,11 @@ Materials for a training on workflow tools and best practices for HPC.
 * [CWL](https://www.commonwl.org/)
 * [Ray](https://docs.ray.io/en/latest/index.html)
 * CI/CD
+
+
+## Language-specific tools
+
+* [hydra](https://hydra.cc/)
 
 
 ## Data management
@@ -33,11 +40,13 @@ Materials for a training on workflow tools and best practices for HPC.
 
 ## Reproducibility & environment management
 
+* Version control with git
 * [conda](https://docs.conda.io/en/latest/)
 * [Apptainer](https://apptainer.org/)
 * [Singularity](https://sylabs.io/)
-* Version control with git
-* [Artifacts](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
+* Docker
+* Podman
+* [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
 
 
 ## Deployment
