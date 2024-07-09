@@ -37,6 +37,8 @@ Materials for a training on workflow tools and best practices for HPC.
 
 ## Best practices
 
+* [CSC information](https://docs.csc.fi/computing/running/throughput/)
+
 
 ## Reproducibility & environment management
 
@@ -47,6 +49,11 @@ Materials for a training on workflow tools and best practices for HPC.
 * Docker
 * Podman
 * [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
+
+
+## Training
+
+* [VIB workshop](https://vibbits-nextflow-workshop.readthedocs.io/en/latest/index.html)
 
 
 ## Deployment
