@@ -26,10 +26,10 @@ Materials for a training on workflow tools and best practices for HPC.
 
 ## Data management
 
-* rsync
+* rsync (RDM)
 * [rclone](https://rclone.org/)
-* [iRODS](https://irods.org/)
-* [Globus](https://www.globus.org/)
+* [iRODS](https://irods.org/) (RDM)
+* [Globus](https://www.globus.org/) (RDM)
 * metadata
 * [DVC](https://dvc.org/)
 * databases & hosting
