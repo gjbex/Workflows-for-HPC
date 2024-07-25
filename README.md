@@ -19,11 +19,6 @@ Materials for a training on workflow tools and best practices for HPC.
 * CI/CD (ask Maxime for speaker)
 
 
-## Language-specific tools
-
-* [hydra](https://hydra.cc/)
-
-
 ## Data management
 
 * rsync (RDM)
@@ -46,6 +41,11 @@ Do not cover in lunchbox.
 * Docker
 * Podman
 * [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
+
+
+## Language-specific tools
+
+* [hydra](https://hydra.cc/)
 
 
 ## Deployment
