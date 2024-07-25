@@ -16,7 +16,7 @@ Materials for a training on workflow tools and best practices for HPC.
 * [eFlow4HPC](https://eflows4hpc.eu/)
 * [CWL](https://www.commonwl.org/)
 * [Ray](https://docs.ray.io/en/latest/index.html) (De Graeve)
-* CI/CD
+* CI/CD (ask Maxime for speaker)
 
 
 ## Language-specific tools
@@ -35,12 +35,9 @@ Materials for a training on workflow tools and best practices for HPC.
 * databases & hosting
 
 
-## Best practices
-
-* [CSC information](https://docs.csc.fi/computing/running/throughput/)
-
-
 ## Reproducibility & environment management
+
+Do not cover in lunchbox.
 
 * Version control with git
 * [conda](https://docs.conda.io/en/latest/)
@@ -51,11 +48,16 @@ Materials for a training on workflow tools and best practices for HPC.
 * [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
 
 
-## Training
-
-* [VIB workshop](https://vibbits-nextflow-workshop.readthedocs.io/en/latest/index.html)
-
-
 ## Deployment
 
 * VSC Cloud
+
+
+## Best practices
+
+* [CSC information](https://docs.csc.fi/computing/running/throughput/)
+
+
+## Training
+
+* [VIB workshop](https://vibbits-nextflow-workshop.readthedocs.io/en/latest/index.html)
