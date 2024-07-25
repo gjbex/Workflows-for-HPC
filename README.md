@@ -5,17 +5,17 @@ Materials for a training on workflow tools and best practices for HPC.
 
 ## Workflow tools
 
-* cron
-* [Slurm scheduler & dependencies](https://slurm.schedmd.com/)
+* cron (Ehsan)
+* [Slurm scheduler & dependencies](https://slurm.schedmd.com/) (Ehsan)
 * [Hyperqueue](https://github.com/It4innovations/hyperqueue)
-* worker, atools, GNU parallel
+* worker-ng, atools, GNU parallel (Geert Jan)
 * [Fireworks](https://materialsproject.github.io/fireworks/)
-* [Snakemake](https://snakemake.readthedocs.io/en/stable/)
-* [Nextflow](https://www.nextflow.io/)
+* [Snakemake](https://snakemake.readthedocs.io/en/stable/) (Thys, Fiers)
+* [Nextflow](https://www.nextflow.io/) (Davie, Fiers)
 * [ACROSS](https://www.acrossproject.eu/across-platform/)
 * [eFlow4HPC](https://eflows4hpc.eu/)
 * [CWL](https://www.commonwl.org/)
-* [Ray](https://docs.ray.io/en/latest/index.html)
+* [Ray](https://docs.ray.io/en/latest/index.html) (De Graeve)
 * CI/CD
 
 
