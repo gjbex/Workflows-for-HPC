@@ -8,7 +8,7 @@ Materials for a training on workflow tools and best practices for HPC.
 * cron
 * [Slurm scheduler & dependencies](https://slurm.schedmd.com/)
 * [Hyperqueue](https://github.com/It4innovations/hyperqueue)
-* worker, tools, GNU parallel
+* worker, atools, GNU parallel
 * [Fireworks](https://materialsproject.github.io/fireworks/)
 * [Snakemake](https://snakemake.readthedocs.io/en/stable/)
 * [Nextflow](https://www.nextflow.io/)
