@@ -15,7 +15,8 @@ Materials for a training on workflow tools and best practices for HPC.
 * [ACROSS](https://www.acrossproject.eu/across-platform/)
 * [eFlow4HPC](https://eflows4hpc.eu/)
 * [CWL](https://www.commonwl.org/)
-* [Ray](https://docs.ray.io/en/latest/index.html) (De Graeve)
+* [Ray](https://docs.ray.io/en/latest/index.html) (De Graeve, there is a ticket 178301 where the user - ashkan.pirmani@kuleuven.be
+- saying he is using Flower, not Ray)
 * CI/CD (ask Maxime for speaker)
 
 
