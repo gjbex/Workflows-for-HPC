@@ -1,9 +1,12 @@
 ---
 title: "Workflows for HPC lunchbox session"
 author: "Ehsan Moravveji, Jan Ooghe, Geert Jan Bex"
+institute: Vlaams Supercomputer Centrum
+date: today
 format: 
   revealjs:
     incremental: true
+    slide-number: true
 ---
 
 ## Overview
@@ -11,11 +14,11 @@ format:
 Topic covered:
 
 - Workflows using the scheduler
-- Workflow system
+- Workflow systems
 - Continuous integration/continous deployment (CI/CD)
 
 - Data management
   - Globus
   - iRODS
 
-{{< include scrontab.qmd >}}
+{{< include slurm_workflows.qmd >}}

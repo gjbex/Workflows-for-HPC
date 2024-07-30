@@ -1,0 +1,11 @@
+# Slurm workflows
+
+## Overview
+
+By itself, Slurm offers "workflow capabilities
+
+- running jobs at regular intervals: `scrontab`
+- job depencencies
+- job arrays
+
+{{< include scrontab.qmd >}}
