@@ -1,0 +1,6 @@
+## Running jobs at regular intervals
+
+Command:
+```bash
+$ scrontab
+```
