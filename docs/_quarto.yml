@@ -1,5 +1,3 @@
 project:
   title: "Workflows for HPC lunchbox session"
-
-
-
+  output-dir: lunchbox_slides

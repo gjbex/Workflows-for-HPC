@@ -1,7 +1,5 @@
+# quarto directory
 .quarto/
 
-*_files/
-*.html
-*.pdf
-
-/.quarto/
+# output directory
+lunchbox_slides/
