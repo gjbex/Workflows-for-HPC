@@ -21,4 +21,6 @@ Topic covered:
   - Globus
   - iRODS
 
+{{< include at.qmd >}}
+{{< include crontab.qmd >}}
 {{< include slurm_workflows.qmd >}}

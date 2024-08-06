@@ -1,0 +1,41 @@
+# `crontab`: Native Linux Scheduler
+
+## Overview
+
+- Similar to `at`, but repeats a task
+- Part of most Unix-like distros
+- Supported at VSC sites
+- Suitable for light-weight tasks (sysadmin always uses it)
+- Can run on the login node (no job)
+
+```bash
+crontab -l   # lists all scheduled cronjobs
+crontab -e   # edit 
+crontab -r   # remove
+```
+
+## Syntax
+
+```bash
+SHELL = /bin/bash
+MYVAR = foo
+
+* * * * * command to be executed
+– – – – –
+| | | | |
+| | | | +—– day of week (0 – 6) (Sunday=0)
+| | | +——- month (1 – 12)
+| | +——— day of month (1 – 31)
+| +———– hour (0 – 23)
++————- min (0 – 59)
+```
+Or simply
+```bash
+@daily $VSC_DATA/cronjobs/run_pipeline.sh
+```
+
+## Example
+
+```bash
+@weekly $VSC_DATA/tests/crontab/accountinfo.sh
+```
