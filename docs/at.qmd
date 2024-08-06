@@ -1,0 +1,35 @@
+# `at`: Do it, but only once!
+
+## Overview
+
+- Part of most Unix-like distros
+- Schedule a task at a specific moment
+- Executes only once
+- Companion utilities: `batch`, `atq`, `atrm`
+- Use `-M` to suppress sending mails
+
+## Syntax
+
+```bash
+# interactive mode
+at [options] runtime
+```
+
+Accepted (suggested) formats for `runtime` are:
+
+- `HH:MM` or `HHMM`
+- `now`, `noon`, `midnight`, `teatime` (16:00)
+- `HH:MM YY-MM-DD`
+- and more. See [at man page](https://linux.die.net/man/1/at)
+
+## Example
+
+```bash
+# execute a shell script
+at 13:08 24-08-06 -M -f $VSC_DATA/cronjobs/accountinfo.sh 
+# list scheduled tasks
+at -l
+3       Tue Aug  6 13:08:00 2024 a vsc30745
+# delete task by its id
+at -d 3
+```

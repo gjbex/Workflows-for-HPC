@@ -2,7 +2,7 @@
 
 ## Overview
 
-By itself, Slurm offers "workflow capabilities
+By itself, Slurm offers "workflow capabilities"
 
 - running jobs at regular intervals: `scrontab`
 - job depencencies
