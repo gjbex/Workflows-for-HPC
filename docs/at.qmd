@@ -1,9 +1,9 @@
 # `at`: Do it, but only once!
 
-## Overview
+## Overview: `at`
 
 - Part of most Unix-like distros
-- Schedule a task at a specific moment
+- Schedules a task at a specific moment
 - Executes only once
 - Companion utilities: `batch`, `atq`, `atrm`
 - Use `-M` to suppress sending mails
@@ -12,10 +12,10 @@
 
 ```bash
 # interactive mode
-at [options] runtime
+at [options] <runtime>
 ```
 
-Accepted (suggested) formats for `runtime` are:
+Accepted (suggested) formats for `<runtime>` are:
 
 - `HH:MM` or `HHMM`
 - `now`, `noon`, `midnight`, `teatime` (16:00)

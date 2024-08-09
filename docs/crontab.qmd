@@ -2,23 +2,24 @@
 
 ## Overview
 
-- Similar to `at`, but repeats a task
+- Similar to `at`, but repeats executing a command/script
 - Part of most Unix-like distros
 - Supported at VSC sites
 - Suitable for light-weight tasks (sysadmin always uses it)
 - Can run on the login node (no job)
 
 ```bash
-crontab -l   # lists all scheduled cronjobs
-crontab -e   # edit 
-crontab -r   # remove
+$ crontab -l   # lists all scheduled cronjobs
+$ crontab -e   # edit
+crontab: installing new crontab
+$ crontab -r   # remove
 ```
 
 ## Syntax
 
 ```bash
-SHELL = /bin/bash
-MYVAR = foo
+SHELL=/bin/bash
+MYVAR=foo
 
 * * * * * command to be executed
 – – – – –
@@ -29,13 +30,13 @@ MYVAR = foo
 | +———– hour (0 – 23)
 +————- min (0 – 59)
 ```
-Or simply
-```bash
-@daily $VSC_DATA/cronjobs/run_pipeline.sh
-```
 
 ## Example
 
 ```bash
-@weekly $VSC_DATA/tests/crontab/accountinfo.sh
+# Every Sunday midnight
+0 0 * * 7 /bin/bash -l -c $VSC_DATA/tests/crontab/accountinfo.sh
+# or simply
+@weekly /bin/bash -l -c $VSC_DATA/tests/crontab/accountinfo.sh
 ```
+Generates an account overview report in Markdown format
