@@ -20,7 +20,7 @@
 ## Example
 
 - Submit a chain of 8 jobs in a for-loop
-- Next job starts if the previous job succeeded: `<type>=afterok`
+- Next job starts if the previous job succeeded
 
 ```bash
 NITER=8
@@ -33,9 +33,7 @@ for ITER in $(seq $NITER); do
     fi
 
     PREV_JOBID=$(echo $SUBMIT_MSG | awk '{print $4}')
-    if [ -z $PREV_JOBID ]; then
-        echo "ERROR: Submitting last job failed. ITER=$ITER"
-        exit
-    fi
+    [[ -z $PREV_JOBID ]] && \
+        { echo "ERROR: Failed in ITER=$ITER"; exit; }
 done
 ```

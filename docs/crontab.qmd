@@ -1,9 +1,8 @@
-# `crontab`: Native Linux Scheduler
+# `crontab`
 
 ## Overview
 
 - Similar to `at`, but repeats executing a command/script
-- Part of most Unix-like distros
 - Supported at VSC sites
 - Suitable for light-weight tasks (sysadmin always uses it)
 - Can run on the login node (no job)

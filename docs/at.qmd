@@ -1,8 +1,7 @@
-# `at`: Do it, but only once!
+# `at`
 
-## Overview: `at`
+## Overview
 
-- Part of most Unix-like distros
 - Schedules a task at a specific moment
 - Executes only once
 - Companion utilities: `batch`, `atq`, `atrm`
