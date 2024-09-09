@@ -22,15 +22,16 @@ $ scrontab -l
 #SCRON --partition=batch
 #SCRON --nodes=1 --ntasks=1
 #SCRON --job-name=HourlyNodeInfo
-#SCRON --output=%x.stdout
+#SCRON --output=/scratch/leuven/307/vsc30745/jobinfo.stdout
 #SCRON --open-mode=append
 #SCRON --time=1:00
 
 @hourly $VSC_DATA/tests/scrontab/jobinfo.sh
-
+```
+Job is scheduled:
+```bash
 $ squeue -M genius -u $USER
 CLUSTER: genius
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-          56820020     batch HourlyNo vsc30745 PD       0:00      1 (BeginTime)
-
+          56965800     batch HourlyNo vsc30745 PD       0:00      1 (BeginTime)
 ```

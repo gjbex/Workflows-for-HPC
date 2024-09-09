@@ -1,7 +1,7 @@
 ## Job Dependency
 
-- Defer starttime until dependency condition is fulfiled
 - To chain jobs for serial execution
+- Defer starttime until dependency condition is fulfiled
 - May rely on exit codes of your application to Slurm
 - `-d|--dependency=<dependency_list>` for both `srun` and `sbatch`
 
@@ -16,6 +16,7 @@
 ```
 
 - `type` can be `after|afterany|afterok|afternotok` and more
+- Be careful with your exit codes!
 
 ## Example
 
@@ -34,6 +35,6 @@ for ITER in $(seq $NITER); do
 
     PREV_JOBID=$(echo $SUBMIT_MSG | awk '{print $4}')
     [[ -z $PREV_JOBID ]] && \
-        { echo "ERROR: Failed in ITER=$ITER"; exit; }
+        { echo "ERROR: Failed in ITER=$ITER"; exit 1; }
 done
 ```
