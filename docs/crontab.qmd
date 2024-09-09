@@ -7,12 +7,14 @@
 - Suitable for light-weight tasks (sysadmin always uses it)
 - Can run on the login node (no job)
 
+::: {.fragment}
 ```bash
 $ crontab -l   # lists all scheduled cronjobs
 $ crontab -e   # edit
 crontab: installing new crontab
 $ crontab -r   # remove
 ```
+:::
 
 ## Syntax
 
@@ -38,11 +40,15 @@ MYVAR=foo
 # or simply
 @weekly /bin/bash -l -c $VSC_DATA/tests/crontab/accountinfo.sh
 ```
+::: {.fragment}
 Generates an account overview report in Markdown, e.g.
 
+:::: {style="font-size: 75%"}
 | DATE            | CREDITS         | VSC_HOME        | VSC_DATA        | VSC_SCRATCH     | STG_44          |
 | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
 | 2024.08.14      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
 | 2024.08.15      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
 | 2024.08.16      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
 | 2024.08.17      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
+::::
+:::
