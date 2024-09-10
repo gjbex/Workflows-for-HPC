@@ -11,7 +11,7 @@
 
 ```bash
 # interactive mode
-at [options] <runtime>
+$ at [options] <runtime>
 ```
 
 Accepted (suggested) formats for `<runtime>` are:
@@ -25,10 +25,10 @@ Accepted (suggested) formats for `<runtime>` are:
 
 ```bash
 # execute a shell script
-at 13:08 24-08-06 -M -f $VSC_DATA/cronjobs/accountinfo.sh 
+$ at 13:08 24-08-06 -M -f $VSC_DATA/cronjobs/accountinfo.sh 
 # list scheduled tasks
-at -l
+$ at -l
 3       Tue Aug  6 13:08:00 2024 a vsc30745
 # delete task by its id
-at -d 3
+$ at -d 3
 ```
