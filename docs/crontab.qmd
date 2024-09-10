@@ -1,24 +1,26 @@
-# `crontab`: Native Linux Scheduler
+# `crontab`
 
 ## Overview
 
-- Similar to `at`, but repeats a task
-- Part of most Unix-like distros
+- Similar to `at`, but repeats executing a command/script
 - Supported at VSC sites
 - Suitable for light-weight tasks (sysadmin always uses it)
 - Can run on the login node (no job)
 
+::: {.fragment}
 ```bash
-crontab -l   # lists all scheduled cronjobs
-crontab -e   # edit 
-crontab -r   # remove
+$ crontab -l   # lists all scheduled cronjobs
+$ crontab -e   # edit
+crontab: installing new crontab
+$ crontab -r   # remove
 ```
+:::
 
 ## Syntax
 
 ```bash
-SHELL = /bin/bash
-MYVAR = foo
+SHELL=/bin/bash
+MYVAR=foo
 
 * * * * * command to be executed
 – – – – –
@@ -29,13 +31,24 @@ MYVAR = foo
 | +———– hour (0 – 23)
 +————- min (0 – 59)
 ```
-Or simply
-```bash
-@daily $VSC_DATA/cronjobs/run_pipeline.sh
-```
 
 ## Example
 
 ```bash
-@weekly $VSC_DATA/tests/crontab/accountinfo.sh
+# Every Sunday midnight
+0 0 * * 7 /bin/bash -l -c $VSC_DATA/tests/crontab/accountinfo.sh
+# or simply
+@weekly /bin/bash -l -c $VSC_DATA/tests/crontab/accountinfo.sh
 ```
+::: {.fragment}
+Generates an account overview report in Markdown, e.g.
+
+:::: {style="font-size: 75%"}
+| DATE            | CREDITS         | VSC_HOME        | VSC_DATA        | VSC_SCRATCH     | STG_44          |
+| --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
+| 2024.08.14      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
+| 2024.08.15      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
+| 2024.08.16      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
+| 2024.08.17      | 4876433/4876433 | 521M/3072M      | 101476M/225G    | 70.16M/4.883T   | 2.103T/4T       |
+::::
+:::

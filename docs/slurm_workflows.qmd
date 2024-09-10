@@ -9,3 +9,4 @@ By itself, Slurm offers "workflow capabilities"
 - job arrays
 
 {{< include scrontab.qmd >}}
+{{< include job_dependency.qmd >}}

@@ -1,0 +1,44 @@
+## Job Dependency
+
+- To chain jobs for serial execution
+- Defer starttime until dependency condition is fulfiled
+- May rely on exit codes of your application to Slurm
+- `-d|--dependency=<dependency_list>` for both `srun` and `sbatch`
+
+## Job Dependency Syntax
+
+- Separator: `,` means AND and `?` means OR
+
+::: {.fragment}
+```bash
+#SBATCH --dependency=<type:JobID>,<type:JobID>
+# or
+#SBATCH --dependency=<type:JobID>?<type:JobID>
+```
+:::
+
+- `type` can be `after|afterany|afterok|afternotok` and more
+- Be careful with your exit codes!
+
+## Example
+
+- Submit a chain of 8 jobs in a for-loop
+- Next job starts if the previous job succeeded
+
+::: {.fragment style="font-size: 90%"}
+```bash
+NITER=8
+PREV_JOBID=
+for ITER in $(seq $NITER); do
+    if [ $ITER -eq 1 ]; then
+        SUBMIT_MSG=$(sbatch jobscript.slurm)
+    else
+        SUBMIT_MSG=$(sbatch jobscript.slurm --dependency=afterok:${PREV_JOBID})    
+    fi
+
+    PREV_JOBID=$(echo $SUBMIT_MSG | awk '{print $4}')
+    [[ -z $PREV_JOBID ]] && \
+        { echo "ERROR: Failed in ITER=$ITER"; exit 1; }
+done
+```
+:::
