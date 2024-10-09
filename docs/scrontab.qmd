@@ -2,5 +2,41 @@
 
 Command:
 ```bash
-$ scrontab
+$ scrontab file
+$ scrontab [-l] [-e] [-r]
 ```
+
+- Most of `#SBATCH` directives are supported
+- Multiple tasks can be separated by `#SCRON` lines 
+- `scrontab` syntax is identical to `crontab`
+- New job is scheduled only after previous jobs complete
+- If a job is cancelled, scheduling stops
+
+## Example
+
+```bash
+$ scrontab -l
+#!/bin/bash -l
+#SBATCH --cluster=genius
+#SCRON --account=lpt2_sysadmin
+#SCRON --partition=batch
+#SCRON --nodes=1 --ntasks=1
+#SCRON --job-name=HourlyNodeInfo
+#SCRON --output=/scratch/leuven/307/vsc30745/jobinfo.stdout
+#SCRON --open-mode=append
+#SCRON --time=1:00
+
+@hourly $VSC_DATA/tests/scrontab/jobinfo.sh
+```
+::: {.fragment}
+Job is scheduled:
+
+:::: {style="font-size: 90%"}
+```bash
+$ squeue -M genius -u $USER
+CLUSTER: genius
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          56965800     batch HourlyNo vsc30745 PD       0:00      1 (BeginTime)
+```
+::::
+:::
