@@ -46,7 +46,7 @@ rule create_zip:
     shell:
         "zip -q -j {output} {input}"
 
-rule create_dataset:
+rule create_hugging_face_dataset:
     input:
         expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
         "data/seq_labels.csv"
