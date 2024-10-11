@@ -1,0 +1,55 @@
+nr_files = 10
+data_dir = 'data'
+image_dir = f'{data_dir}/images'
+tar_dir = f'{data_dir}/tars'
+dataset_name = f'{data_dir}/dataset'
+
+rule all:
+    input:
+        file_list = f'{data_dir}/images_files.txt',
+        images = expand(f'{image_dir}/img_{{idx}}.tiff', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
+        numpy_files = expand(f'{image_dir}/img_{{idx}}.npy', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
+        dataset = f'{dataset_name}/dataset_dict.json',
+
+rule create_images:
+    input:
+        "template.tiff",
+    output:
+        file_list = rules.all.input.file_list,
+        images = rules.all.input.images,
+    run:
+        shell('''
+        mkdir -p {image_dir}
+        rm -f {output.file_list}
+        for i in $(seq -w 000001 {nr_files})
+        do
+            ./create_image_data.sh $i {image_dir}/img_$i.tiff
+            echo {image_dir}/img_$i.tiff >> {output.file_list}
+        done''')
+
+rule convert_to_numpy:
+    input:
+        f"{image_dir}/{{file_name}}.tiff",
+    output:
+        f"{image_dir}/{{file_name}}.npy",
+    shell:
+        "python convert_tiff_to_numpy.py {input}"
+
+rule create_tar_dir:
+    input:
+        rules.create_images.output.images
+    output:
+        tar_file = "data/tars/images.tar"
+    run:
+        shell('''
+        mkdir -p {tar_dir}
+        tar cf {output.tar_file} {input}
+        ''')
+
+rule create_hugging_face_dataset:
+    input:
+        rules.create_tar_dir.output.tar_file,
+    output:
+        rules.all.input.dataset,
+    run:
+        shell('./convert_tiff_tars_to_pytorch_tensor_dataset.py $(dirname {input}) $(dirname {output})')
