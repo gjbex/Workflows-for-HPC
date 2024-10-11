@@ -3,6 +3,12 @@
 Materials for a training on workflow tools and best practices for HPC.
 
 
+## What is it?
+
+1. `source-code`: directory that contains examples of various workflow tools.
+1. `docs`: directory that contains the source code of the slides.
+
+
 ## Workflow tools
 
 * cron (Ehsan)
