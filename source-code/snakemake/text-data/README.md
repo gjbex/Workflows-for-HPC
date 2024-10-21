@@ -18,7 +18,8 @@ This workflow generates the following artifacts:
 1. `concat_txt_to_dataset.py`: Python script to concatenate text files into a Hugging
    Face dataset, including labels.
 1. `Snakefile`: Snakemake file to generate the data set.
-
+1. `config_medium.yml`: configuration file to produce a "medium" sized dataset.
+1. `config_small.yml`: configuration file to produce a small dataset.
 
 ### Running the workflow
 
@@ -27,3 +28,13 @@ To run the workflow:
 $ snakemake
 ```
 This will create a directory `data` that contains all the artifaccts.
+
+To run with a configuration file, e.g.,
+```bash
+$ snakemake  --configfile config_small.yml
+```
+
+To run with a runtime parameter:
+```bash
+$ snakemake  --config nr_file=20
+```
