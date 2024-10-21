@@ -1,8 +1,12 @@
-nr_files = 10
-data_dir = 'data'
+# configuration parameters passed via --configfile or --config
+nr_files = config.get('nr_files', 5)
+data_dir = config.get('data_dir', 'data')
+
+# global variables
 text_dir = f'{data_dir}/texts'
 text_file_pattern = f'{text_dir}/*.txt'
 
+# default rule
 rule all:
     input:
         file_list = f'{data_dir}/text_files.txt',
