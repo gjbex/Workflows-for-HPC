@@ -1,56 +1,58 @@
 nr_files = 10
+data_dir = 'data'
+text_dir = f'{data_dir}/texts'
+text_file_pattern = f'{text_dir}/*.txt'
 
 rule all:
     input:
-        "data/seq.tar",
-        "data/seq.zip",
-        "data/seq_labels.csv",
-        "data/seq_files.txt",
-        directory("data/dataset/")
+        file_list = f'{data_dir}/text_files.txt',
+        label_file = f'{data_dir}/text_labels.csv',
+        tar_file = f'{data_dir}/texts.tar',
+        zip_file = f'{data_dir}/texts.zip',
+        dataset = directory(f'{data_dir}/text_dataset'),
 
 rule create_text:
     output:
-        expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
-        "data/seq_files.txt"
+        text_files = expand(f'{text_dir}/text_{{idx}}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
+        file_list = rules.all.input.file_list,
     run:
-        shell('''
-        mkdir -p data/texts
-        rm -f data/seq_files.txt
-        for i in $(seq -w 000001 {nr_files})
-        do
-            ./create_text_data.py  --output data/texts/text_$i.txt
-            echo "data/texts/text_$i.txt" >> data/seq_files.txt
+        shell(f'''
+        mkdir -p {text_dir}
+        rm -f {{output.file_list}}
+        for i in $(seq -w 000001 {nr_files}); do
+            ./create_text_data.py  --output {text_dir}/text_$i.txt
+            echo {text_dir}/text_$i.txt >> {{output.file_list}}
         done''')
 
 rule create_labels:
     input:
-        expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)])
+        text_files = rules.create_text.output.text_files
     output:
-        "data/seq_labels.csv"
+        label_file = rules.all.input.label_file
     shell:
-        './create_labels.py "data/texts/*"  --types int:2 str:10  -o data/seq_labels.csv'
+        f'./create_labels.py "{text_dir}/*"  --types int:2 str:10  -o {{output.label_file}}'
 
 rule create_tar:
     input:
-        expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)])
+        text_files = rules.create_text.output.text_files
     output:
-        "data/seq.tar"
+        tar_file = rules.all.input.tar_file
     shell:
-        "tar -cf {output} {input}"
+        'tar -cf {output} {input}'
 
 rule create_zip:
     input:
-        expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)])
+        text_files = rules.create_text.output.text_files
     output:
-        "data/seq.zip"
+        zip_file = rules.all.input.zip_file
     shell:
         "zip -q -j {output} {input}"
 
 rule create_hugging_face_dataset:
     input:
-        expand('data/texts/text_{idx}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
-        "data/seq_labels.csv"
+        text_files = rules.create_text.output.text_files,
+        label_file = rules.create_labels.output.label_file,
     output:
-        directory("data/dataset/")
+        text_dataset = rules.all.input.dataset
     shell:
-        './concat_txt_to_dataset.py "data/texts/*.txt" data/seq_labels.csv data/dataset/'
+        f'./concat_txt_to_dataset.py "{text_file_pattern}" {{input.label_file}} {{output}}'
