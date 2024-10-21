@@ -11,3 +11,5 @@ Workflow that contains a rule with wildcards in input and output.
 1. `convert_tiff_tars_to_pytorch_tensor_dataset.py`: Python script to
    convert a directory of TARred images to a PyTorch tensor dataset.
 1. `Snakefile`: Snakemake workflow to generate all the data.
+1. `config_medium.yml`: configuration file to generate a "medium" sized dataset.
+1. `config_small.yml`: configuration file to generate a small dataset.

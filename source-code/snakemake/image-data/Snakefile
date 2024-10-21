@@ -1,9 +1,13 @@
-nr_files = 10
-data_dir = 'data'
+# runtime parameters set via --configfile or --config
+nr_files = config.get('nr_files', 5)
+data_dir = config.get('data_dir', 'data')
+
+# global variables
 image_dir = f'{data_dir}/images'
 tar_dir = f'{data_dir}/tars'
 dataset_name = f'{data_dir}/dataset'
 
+# default rule
 rule all:
     input:
         file_list = f'{data_dir}/images_files.txt',
