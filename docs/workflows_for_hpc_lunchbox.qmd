@@ -9,6 +9,10 @@ format:
     slide-number: true
 ---
 
+## Poll
+
+![](/img/qr-survey-1.PNG)
+
 ## Overview
 
 Topic covered:
@@ -24,3 +28,7 @@ Topic covered:
 
 {{< include linux_schedulers.qmd >}}
 {{< include slurm_workflows.qmd >}}
+
+## Poll
+
+![](/img/qr-survey-2.PNG)
