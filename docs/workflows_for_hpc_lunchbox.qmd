@@ -2,7 +2,7 @@
 title: "Workflows for HPC lunchbox session"
 author: "Ehsan Moravveji, Jan Ooghe, Geert Jan Bex"
 institute: Vlaams Supercomputer Centrum
-date: 27 November 2024
+date: 25 November 2024
 format: 
   revealjs:
     incremental: true
@@ -20,11 +20,10 @@ Topic covered:
 - Linux schedulers
 - Workflows using the scheduler
 - Workflow systems
-- Continuous integration/continous deployment (CI/CD)
-
-- Data management
-  - Globus
-  - iRODS
+  - [atools](https://atools.readthedocs.io/en/latest/) and [Worker](https://worker.readthedocs.io/en/latest/)
+  - [Jobflow](https://github.com/materialsproject/jobflow) and [Jobflow-Remote](https://github.com/Matgenix/jobflow-remote)
+  - [Nextflow](http://www.nextflow.io/index.html)
+  - [Snakemake](http://snakemake.github.io/)
 
 {{< include linux_schedulers.qmd >}}
 {{< include slurm_workflows.qmd >}}
