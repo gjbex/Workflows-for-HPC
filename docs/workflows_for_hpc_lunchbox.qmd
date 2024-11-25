@@ -27,6 +27,8 @@ Topic covered:
 
 {{< include linux_schedulers.qmd >}}
 {{< include slurm_workflows.qmd >}}
+{{< include worker_atools.qmd >}}
+
 
 ## Poll
 

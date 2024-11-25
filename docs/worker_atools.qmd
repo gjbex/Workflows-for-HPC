@@ -1,0 +1,33 @@
+# Worker & atools
+
+
+## Worker & atools
+
+* Patterns for parallel programming
+  * Embarrassingly parallel workloads
+  * ...
+* Frequent pattern in many scientific/engineering domains
+* Support for pattern
+  * Make it easy to execute
+  * Do the bookkeeping for you
+
+
+## Use case: parameter exploration
+
+![](/img/embarrassingly_parallel_workflow.png)
+
+
+## Worker versus atools
+
+Use worker
+
+* Many (> 100) work items
+* 1 min. < work item duration < 5 min.
+* Guaranteed throughput
+
+. . .
+
+Use atools
+
+* Not too many (< 100) work items
+* Flexible throughput (less queue sensitive)
