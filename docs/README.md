@@ -16,7 +16,7 @@ When you complete this training you will
   state;
 * understand how to SLURM job arrays to run multiple jobs with similar resource
   requirements;
-* be able to use either worker-ng or atools to simplify managging such parallel
+* be able to use either worker-ng or atools to simplify managing such parallel
   workflows;
 * use a workflow manager to run a workflow that consists of multiple tasks that
   require specific resources.
