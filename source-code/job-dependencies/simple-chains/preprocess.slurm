@@ -6,4 +6,4 @@
 
 mamba activate workflows_for_hpc
 
-preprocess.py --nr_points=1000 --data_file points.txt
+preprocess.py --nr_points=1000 --points_file points.txt
