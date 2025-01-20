@@ -1,4 +1,5 @@
 # backup files
 *~
 *.bak
+*.swp
 /~$workflow_for_HPC.pptx
