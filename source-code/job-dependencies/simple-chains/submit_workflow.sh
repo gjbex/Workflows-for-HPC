@@ -1,16 +1,15 @@
-$!/usr/bin/env bash
+#$!/usr/bin/env bash
 
-# define function to extract job ID from sbatch output
-function extract_job_id
-{
-    echo $1 | grep -oP '\d+'
-}
+set -e
 
 # submit preprocessing job
-PREPROCESS_ID=extract_job_id $(sbatch preprocess.slurm)
+PRE_ID=$(sbatch preprocess.slurm | grep -oP '\d+')
+echo "preprocessing job: $PRE_ID"
 
 # submit process job with dependency on preprocessing job
-PROCESS_ID=extract_job_id $(sbatch --dependency=afterok:$PREPROCESS_ID process.slurm)
+PROC_ID=$(sbatch --dependency=afterok:$PRE_ID process.slurm | grep -oP '\d+')
+echo "processing job: $PROC_ID"
 
 # submit postprocess job with dependency on process job
-POSTPROCESS_ID=extract_job_id $(sbatch --dependency=afterok:$PROCESS_ID postprocess.slurm)
+POST_ID=$(sbatch --dependency=afterok:$PROC_ID postprocess.slurm | grep -oP '\d+')
+echo "postprocessing job: $POST_ID"
