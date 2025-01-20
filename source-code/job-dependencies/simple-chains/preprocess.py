@@ -9,7 +9,7 @@ def create_data(file_name, nr_points):
         for _ in range(nr_points):
             x = random.uniform(-1.0, 1.0)
             y = random.uniform(-1.0, 1.0)
-            print(f'{x},{y}\n', file=file)
+            print(f'{x},{y}', file=file)
 
 
 def main():
