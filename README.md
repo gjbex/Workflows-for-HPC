@@ -3,62 +3,18 @@
 Materials for a training on workflow tools and best practices for HPC.
 
 
-## Workflow tools
+## What is it?
 
-* cron (Ehsan)
-* [Slurm scheduler & dependencies](https://slurm.schedmd.com/) (Ehsan)
-* [Hyperqueue](https://github.com/It4innovations/hyperqueue)
-* worker-ng, atools, GNU parallel (Geert Jan)
-* [Fireworks](https://materialsproject.github.io/fireworks/)
-* [Snakemake](https://snakemake.readthedocs.io/en/stable/) (Thys, Fiers)
-* [Nextflow](https://www.nextflow.io/) (Davie, Fiers)
-* [ACROSS](https://www.acrossproject.eu/across-platform/)
-* [eFlow4HPC](https://eflows4hpc.eu/)
-* [CWL](https://www.commonwl.org/)
-* [Ray](https://docs.ray.io/en/latest/index.html) (De Graeve, there is a ticket 178301 where the user - ashkan.pirmani@kuleuven.be
-- saying he is using Flower, not Ray)
-* CI/CD (ask Maxime for speaker)
+1. `workflow_for_HPC.pptx`: PowerPoint presentation on workflow tools and best
+   practices for HPC.
+1. `source-code`: example code for the presentation.
+1. `docs`: web pages for the training.
+1. `CODE_OF_CONDUCT.md`: code of conduct for the training.
+1. `LICENSE`: license information for the training material.
+1. `CONTRIBUTING.md`: guidelines for contributing to the training material.
 
 
-## Data management
+## Contributors
 
-* rsync (RDM)
-* [rclone](https://rclone.org/)
-* [iRODS](https://irods.org/) (RDM)
-* [Globus](https://www.globus.org/) (RDM)
-* metadata
-* [DVC](https://dvc.org/)
-* databases & hosting
-
-
-## Reproducibility & environment management
-
-Do not cover in lunchbox.
-
-* Version control with git
-* [conda](https://docs.conda.io/en/latest/)
-* [Apptainer](https://apptainer.org/)
-* [Singularity](https://sylabs.io/)
-* Docker
-* Podman
-* [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Documentation)
-
-
-## Language-specific tools
-
-* [hydra](https://hydra.cc/)
-
-
-## Deployment
-
-* VSC Cloud
-
-
-## Best practices
-
-* [CSC information](https://docs.csc.fi/computing/running/throughput/)
-
-
-## Training
-
-* [VIB workshop](https://vibbits-nextflow-workshop.readthedocs.io/en/latest/index.html)
+* [Ehsan Moravveji](ehsan.moravveji@kuleuven.be)
+* [Geert Jan Bex](geertjan.bex@uhasselt.be)
