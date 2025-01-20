@@ -6,5 +6,5 @@
 
 mamba activate workflows_for_hpc
 
-postprocesses.py --data_file distances.txt --nr_bins 20 \
+postprocess.py --data_file distances.txt --nr_bins 20 \
     --output_file distribution.txt
