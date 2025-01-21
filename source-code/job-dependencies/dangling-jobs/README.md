@@ -11,3 +11,5 @@ i.e., a dependency that is not satisfied.
 1. `job3.slurm`: job script that will run when job1 fails.
 1. `submit_workflow.sh`: Bash script to submit the jobs to the Slurm scheduler,
    setting up the dependencies.
+1. `clean_up.sh`: Bash script to cancel all pending jobs that have dependencies
+   that can never be satisfied.
