@@ -13,3 +13,6 @@ environment variable (`SLURM_ARRAY_TASK_ID`).
 
 1. `file-processing`: example of using job arrays to process many files in
    parallel.
+1. `array_variables.slurm`: Slurm script to get the values of
+   `SLURM_ARRAY_TASK_ID`, `SLURM_ARRAY_TASK_MIN`, `SLURM_ARRAY_TASK_MAX`
+   `SLURM_ARRAY_TASK_STEP` and `SLURM_ARRAY_TASK_COUNT`.
