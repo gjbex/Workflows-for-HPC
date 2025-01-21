@@ -20,7 +20,7 @@ then
 fi
 
 # set batch start value, i.e., one less than the file number to start with
-BATCH_START=$(( $SLURM_ARRAY_JOB_ID * $BATCH_SIZE ))
+BATCH_START=$(( $SLURM_ARRAY_TASK_ID * $BATCH_SIZE ))
 
 # process all input files
 for i in $(seq $BATCH_SIZE)
