@@ -1,3 +1,6 @@
 # ignore input and output directories
 input/
 output/
+
+# ignore Slurm output files
+slurm-[0-9]*
