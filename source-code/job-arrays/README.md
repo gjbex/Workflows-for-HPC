@@ -6,7 +6,7 @@ to run. The jobs in the array can be run in parallel or sequentially. The jobs
 in the array are distinguished by the job ID and the array ID. The job ID is
 the job ID of the first job in the array and the array ID is the index of the
 job in the array. The array ID is passed to each individual job as an
-environment variable (`SLURM_ARRAY_JOB_ID`)
+environment variable (`SLURM_ARRAY_TASK_ID`).
 
 
 ## What is it?
