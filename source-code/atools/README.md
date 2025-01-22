@@ -9,4 +9,5 @@ Some examples of how to use atools.
    single column only.
 1. `task-id-naming`: example of using the Slurm array task ID to name output
    files.
+1. `openmp`: example of running an array job of an OpenMP application.
 1. `random_failures`: example of an atools job with failing work items.
