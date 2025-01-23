@@ -6,6 +6,6 @@
 
 mamba activate workflows_for_hpc
 
-process.py --data_file points.txt --batch_size 100 \
+process.py --points_file points.txt --batch_size 100 \
     --nr_processes $SLURM_CPUS_PER_TASK \
-    --output_file distances.txt
+    --distances_file distances.txt
