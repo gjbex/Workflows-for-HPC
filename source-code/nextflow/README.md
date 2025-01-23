@@ -8,6 +8,6 @@ jobs.
 
 ## What is it?
 
-1. `simple-chains`: simple example of a workflow with three processes,
+1. `simple-chain`: simple example of a workflow with three processes,
     each processing the output of the previous one.  One process also
     requires a conda environment.
