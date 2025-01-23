@@ -9,3 +9,5 @@ Source code for the examples used in this training.
    a workflow using Slurm.
 1. `job-arrays`: example of using job arrays to run multiple similar,
    independent jobs.
+1. `atools`: examples of using atools to run multiple similar independent jobs.
+1. `nextflow`: example of using Nextflow to run workflows.
