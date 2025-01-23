@@ -14,6 +14,11 @@ params.distribution_file = 'distribution.txt'
 process Preprocess {
     publishDir "${projectDir}/results", mode: 'copy'
 
+    // Job parameters for Slurm executor
+    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
+    cpus 1
+    time '5min'
+
     input:
     val nr_points
 
@@ -31,6 +36,12 @@ process Preprocess {
 process Process {
     publishDir "${projectDir}/results", mode: 'copy'
 
+    // Job parameters for Slurm executor
+    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
+    cpus params.nr_processes
+    time '15min'
+    
+    // script requires conda envirnment
     conda "${projectDir}/conda_environment.yml"
 
     input:
@@ -51,6 +62,11 @@ process Process {
 
 process Postprocess {
     publishDir "${projectDir}/results", mode: 'copy'
+
+    // Job parameters for Slurm executor
+    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
+    cpus 1
+    time '5min'
 
     input:
     path distances_file
