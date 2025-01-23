@@ -21,9 +21,9 @@ def computing_histogram(data, nr_bins, min_value=None, max_value=None):
 
 
 def main():
-    arg_parser = argparse.ArgumentParser('Postprocess: create histogram')
-    arg_parser.add_argument('--data_file', type=str, required=True,
-                            help='Data file to read')
+    arg_parser = argparse.ArgumentParser(description='Postprocess: create histogram')
+    arg_parser.add_argument('--distances_file', type=str, required=True,
+                            help='Data file to read with distances')
     arg_parser.add_argument('--nr_bins', type=int, required=True,
                             help='Number of bins')
     arg_parser.add_argument('--min_value', type=float, default=0.0,
@@ -31,16 +31,16 @@ def main():
     arg_parser.add_argument('--max_value', type=float,
                             default=2.0*math.sqrt(2.0),
                             help='Maximum value')
-    arg_parser.add_argument('--output_file', type=str, required=True,
-                            help='Output file to write')
+    arg_parser.add_argument('--distribution_file', type=str, required=True,
+                            help='Output file to write with distribution of distances')
     options = arg_parser.parse_args()
-    with open(options.data_file, 'r') as f:
+    with open(options.distances_file, 'r') as f:
         data = [float(line.strip()) for line in f]
     histogram = computing_histogram(
             data, options.nr_bins,
             options.min_value, options.max_value
     )
-    with open(options.output_file, 'w') as output:
+    with open(options.distribution_file, 'w') as output:
         left_edge = options.min_value
         delta = (options.max_value - options.min_value)/options.nr_bins
         for value in histogram:

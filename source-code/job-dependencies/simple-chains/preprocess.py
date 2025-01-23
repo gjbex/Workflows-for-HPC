@@ -13,7 +13,7 @@ def create_data(file_name, nr_points):
 
 
 def main():
-    parser = argparse.ArgumentParser('Preprocess: create points')
+    parser = argparse.ArgumentParser(description='Preprocess: create points')
     parser.add_argument('--points_file', type=str, required=True,
                         help='Data file to write')
     parser.add_argument('--nr_points', type=int, required=True,
