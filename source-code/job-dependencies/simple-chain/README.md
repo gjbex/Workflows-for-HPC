@@ -1,4 +1,4 @@
-# Simple chains
+# Simple chain
 
 Example of a simple workflow that consists of a
 
