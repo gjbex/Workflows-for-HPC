@@ -22,3 +22,4 @@ Example of a simple workflow that consists of a
    environments.
 1. `conda_environment.yml`: conda environment file to create the environment
    required by the `Process` step of the workflow.
+1. `conda_init.sh`: Bash script to source to initialize conda.
