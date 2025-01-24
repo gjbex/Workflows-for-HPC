@@ -12,3 +12,4 @@ to define rules. Rules describe how to create output files from input files.
 1. `text-data`: simple Snakemake workflow that generates text data.
 1. `image-data`: Snakemake workflow that generates image data, contains a rule
    that uses wildcards.
+1. `environment.yml`: conda environment file for the workflows.
