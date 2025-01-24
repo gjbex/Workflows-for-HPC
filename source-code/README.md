@@ -11,3 +11,5 @@ Source code for the examples used in this training.
    independent jobs.
 1. `atools`: examples of using atools to run multiple similar independent jobs.
 1. `nextflow`: example of using Nextflow to run workflows.
+1. `snakemake`: Snakemake is a workflow manager that is popular in the domain
+   of bioinformatics.

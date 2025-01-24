@@ -1,0 +1,62 @@
+# configuration parameters passed via --configfile or --config
+nr_files = config.get('nr_files', 5)
+data_dir = config.get('data_dir', 'data')
+
+# global variables
+text_dir = f'{data_dir}/texts'
+text_file_pattern = f'{text_dir}/*.txt'
+
+# default rule
+rule all:
+    input:
+        file_list = f'{data_dir}/text_files.txt',
+        label_file = f'{data_dir}/text_labels.csv',
+        tar_file = f'{data_dir}/texts.tar',
+        zip_file = f'{data_dir}/texts.zip',
+        dataset = directory(f'{data_dir}/text_dataset'),
+
+rule create_text:
+    output:
+        text_files = expand(f'{text_dir}/text_{{idx}}.txt', idx=[f'{i:06d}' for i in range(1, nr_files + 1)]),
+        file_list = rules.all.input.file_list,
+    run:
+        shell(f'''
+        mkdir -p {text_dir}
+        rm -f {{output.file_list}}
+        for i in $(seq -w 000001 {nr_files}); do
+            ./create_text_data.py  --output {text_dir}/text_$i.txt
+            echo {text_dir}/text_$i.txt >> {{output.file_list}}
+        done''')
+
+rule create_labels:
+    input:
+        text_files = rules.create_text.output.text_files
+    output:
+        label_file = rules.all.input.label_file
+    shell:
+        f'./create_labels.py "{text_dir}/*"  --types int:2 str:10  -o {{output.label_file}}'
+
+rule create_tar:
+    input:
+        text_files = rules.create_text.output.text_files
+    output:
+        tar_file = rules.all.input.tar_file
+    shell:
+        'tar -cf {output} {input}'
+
+rule create_zip:
+    input:
+        text_files = rules.create_text.output.text_files
+    output:
+        zip_file = rules.all.input.zip_file
+    shell:
+        "zip -q -j {output} {input}"
+
+rule create_hugging_face_dataset:
+    input:
+        text_files = rules.create_text.output.text_files,
+        label_file = rules.create_labels.output.label_file,
+    output:
+        text_dataset = rules.all.input.dataset
+    shell:
+        f'./concat_txt_to_dataset.py "{text_file_pattern}" {{input.label_file}} {{output}}'
