@@ -1,0 +1,6 @@
+name: workflows_for_hpc
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+prefix: /home/gjb/mambaforge/envs/workflows_for_hpc
