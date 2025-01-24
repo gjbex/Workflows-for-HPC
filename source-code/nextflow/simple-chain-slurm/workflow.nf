@@ -1,5 +1,5 @@
 // parameters for creating the environment
-params.environment_name = 'workflows_for_hpc'
+params.conda_environment_name = 'workflows_for_hpc'
 params.conda_init_file = 'conda_init.sh'
 
 // parameters for the preprocess step
@@ -16,11 +16,20 @@ params.nr_bins = 20
 params.distribution_file = 'distribution.txt'
 
 process CreateEnvironment {
-    script
+    // Job parameters for Slurm executor
+    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
+    cpus 1
+    time '15min'
+
+    output:
+    eval('true')
+
+    script:
     """
     source ${projectDir}/${params.conda_init_file}
-    conda activate ${params.environment_name}
-    if [[ ! $status ]] then;
+    conda activate ${params.conda_environment_name}
+    if [[ ! \$? ]]
+    then
         conda env create -f ${projectDir}/conda_environment.yml
     fi
     """
@@ -54,9 +63,10 @@ process Process {
     // Job parameters for Slurm executor
     clusterOptions '--cluster=wice --account=lpt2_sysadmin'
     cpus params.nr_processes
-    time '15min'
+    time '10min'
     
     input:
+    val state
     path points_file
 
     output:
@@ -64,8 +74,8 @@ process Process {
 
     script:
     """
-    source ${projectDir}/conda_init_file
-    conda activate ${params.conda_environment}
+    source ${projectDir}/${params.conda_init_file}
+    conda activate ${params.conda_environment_name}
     python ${projectDir}/process.py \
         --points_file $points_file \
         --nr_processes ${params.nr_processes} \
@@ -98,8 +108,9 @@ process Postprocess {
 }
 
 workflow {
+    environment_channel = CreateEnvironment()
     parameter_channel = channel.of(params.nr_points)
     preprocess_channel = Preprocess(parameter_channel)
-    process_channel = Process(preprocess_channel)
+    process_channel = Process(environment_channel, preprocess_channel)
     Postprocess(process_channel).view()
 }
