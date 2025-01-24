@@ -11,4 +11,4 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-magick convert -gravity north -pointsize 100 -annotate +0+220 "$1" template.tiff $2 2> /dev/null
+convert -gravity north -pointsize 100 -annotate +0+220 "$1" template.tiff $2 2> /dev/null
