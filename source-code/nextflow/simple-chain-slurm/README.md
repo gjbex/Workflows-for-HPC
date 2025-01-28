@@ -1,10 +1,16 @@
-# Simple chain
+# Simple chain for Slurm
 
 Example of a simple workflow that consists of a
 
+* creating a conda environment if it doesn't exist,
 * preprocessing step,
 * a processing step that requires multiple cores, and
 * a postprocessing step.
+
+Although Nextflow lets you create conda environments on the fly, it does so
+on the login node.  Since for environments with many dependencies this may
+be both time and memory consuming, it may be preferable to do this as a job
+on a cmopute node.
 
 
 ## What is it?
