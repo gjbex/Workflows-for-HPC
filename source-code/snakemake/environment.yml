@@ -1,0 +1,14 @@
+name: snakemake
+channels:
+  - conda-forge
+dependencies:
+  - snakemake
+  - datasets
+  - scikit-image
+  - ca-certificates
+  - certifi
+  - openssl
+  - pytorch
+  - torchvision
+  - cpuonly
+prefix: /home/gjb/mambaforge/envs/snakemake
