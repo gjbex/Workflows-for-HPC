@@ -78,7 +78,7 @@ process Process {
     conda activate ${params.conda_environment_name}
     python ${projectDir}/process.py \
         --points_file $points_file \
-        --nr_processes ${params.nr_processes} \
+        --nr_processes $task.cpus \
         --batch_size ${params.batch_size} \
         --distances_file ${params.distances_file}
     """
