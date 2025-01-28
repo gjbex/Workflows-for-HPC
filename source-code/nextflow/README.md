@@ -17,3 +17,4 @@ jobs.
     Note that due to how jobs are submitted, the conda environment is
     build in a workflow process, rather than as part of the process that
     requires it.
+1. `file-processing`: example of a workflow that processes a number of files.
