@@ -3,7 +3,6 @@ params.output_dir = "output"
 
 process ProcessFile {
     label 'array_job'
-    maxForks 4
     publishDir "${projectDir}/${params.output_dir}"
 
     input:
