@@ -41,6 +41,9 @@ process Process {
     cpus params.nr_processes
     time '15min'
     
+    //
+    beforeScript "source ${projectDir}/conda_init.sh"
+
     // script requires conda envirnment
     conda "${projectDir}/conda_environment.yml"
 
