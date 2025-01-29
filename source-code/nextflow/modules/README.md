@@ -14,3 +14,6 @@ software dependencies.
    script to create a plot for a range of parameter values.
    It converts those plots from PNG to GIF format, and finally
    converts them into an animated GIF file.
+1. `nextflow_slurm.config`: Nextflow configuration file that
+   specifies the Slurm scheduler to use, and the required
+   resources.  It also loads the rquired environment modules.
