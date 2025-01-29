@@ -21,6 +21,9 @@ process CreateEnvironment {
     cpus 1
     time '15min'
 
+    input:
+    path "${projectDir}/${params.conda_environment_name}"
+
     output:
     eval('true')
 
@@ -35,7 +38,7 @@ process CreateEnvironment {
     """
 }
 
-process Preprocess {
+process CreatePoints {
     publishDir "${projectDir}/results", mode: 'copy'
 
     // Job parameters for Slurm executor
@@ -57,7 +60,7 @@ process Preprocess {
     """
 }
 
-process Process {
+process ComputeDistances {
     publishDir "${projectDir}/results", mode: 'copy'
 
     // Job parameters for Slurm executor
@@ -84,7 +87,7 @@ process Process {
     """
 }
 
-process Postprocess {
+process ComputeDistribution {
     publishDir "${projectDir}/results", mode: 'copy'
 
     // Job parameters for Slurm executor
@@ -110,7 +113,7 @@ process Postprocess {
 workflow {
     environment_channel = CreateEnvironment()
     parameter_channel = channel.of(params.nr_points)
-    preprocess_channel = Preprocess(parameter_channel)
-    process_channel = Process(environment_channel, preprocess_channel)
-    Postprocess(process_channel).view()
+    create_points_channel = CreatePoints(parameter_channel)
+    compute_distances_channel = ComputeDistances(environment_channel, create_points_channel)
+    ComputeDistribution(compute_distances_channel).view()
 }
