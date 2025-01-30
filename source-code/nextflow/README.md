@@ -18,3 +18,5 @@ jobs.
     build in a workflow process, rather than as part of the process that
     requires it.
 1. `file-processing`: example of a workflow that processes a number of files.
+1. `modules`: example of a workflow that uses environment modules when running
+   on a cluster.

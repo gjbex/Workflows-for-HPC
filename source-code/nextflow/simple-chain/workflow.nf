@@ -3,7 +3,6 @@ params.nr_points = 1000
 params.points_file = 'points.txt'
 
 // parameters for the process step
-params.nr_processes = 2
 params.batch_size = 250
 params.distances_file = 'distances.txt'
 
@@ -11,13 +10,8 @@ params.distances_file = 'distances.txt'
 params.nr_bins = 20
 params.distribution_file = 'distribution.txt'
 
-process Preprocess {
+process CreatePoints {
     publishDir "${projectDir}/results", mode: 'copy'
-
-    // Job parameters for Slurm executor
-    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
-    cpus 1
-    time '5min'
 
     input:
     val nr_points
@@ -33,16 +27,8 @@ process Preprocess {
     """
 }
 
-process Process {
+process ComputeDistances {
     publishDir "${projectDir}/results", mode: 'copy'
-
-    // Job parameters for Slurm executor
-    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
-    cpus params.nr_processes
-    time '15min'
-    
-    //
-    beforeScript "source ${projectDir}/conda_init.sh"
 
     // script requires conda envirnment
     conda "${projectDir}/conda_environment.yml"
@@ -57,19 +43,14 @@ process Process {
     """
     python ${projectDir}/process.py \
         --points_file $points_file \
-        --nr_processes ${params.nr_processes} \
+        --nr_processes $task.cpus \
         --batch_size ${params.batch_size} \
         --distances_file ${params.distances_file}
     """
 }
 
-process Postprocess {
+process ComputeDistribution {
     publishDir "${projectDir}/results", mode: 'copy'
-
-    // Job parameters for Slurm executor
-    clusterOptions '--cluster=wice --account=lpt2_sysadmin'
-    cpus 1
-    time '5min'
 
     input:
     path distances_file
@@ -88,7 +69,7 @@ process Postprocess {
 
 workflow {
     parameter_channel = channel.of(params.nr_points)
-    preprocess_channel = Preprocess(parameter_channel)
-    process_channel = Process(preprocess_channel)
-    Postprocess(process_channel).view()
+    create_points_channel = CreatePoints(parameter_channel)
+    compute_distances_channel = ComputeDistances(create_points_channel)
+    ComputeDistribution(compute_distances_channel).view()
 }
