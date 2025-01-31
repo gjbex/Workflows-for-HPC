@@ -12,3 +12,7 @@ GNU parallel can use multiple input sources.
    and `arg2.txt`.
 1. `compute_crossproduct.sh`: compute the product of all pairs of values in
    `arg1.txt` and `arg2.txt`.
+1. `args.csv`: CSV file with all pairs of values in `arg1.txt` and
+   `arg2.txt` as columns.
+1. `compute_single_file.sh`: compute the product of all pairs of values in
+   a CSV files with two columns.
