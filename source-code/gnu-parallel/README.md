@@ -9,3 +9,4 @@ parallel processing within a job.
 
 1. `file-processing`: example of using GNU parallel to create and process files
    in parallel.
+1. `multiple-inputs`: example of using GNU parallel with multiple input sources.
