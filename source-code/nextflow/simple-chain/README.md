@@ -25,6 +25,8 @@ Example of a simple workflow that consists of a
 1. `conda_init.sh`: Bash script to initialize the shell for conda use.
    **Note:** this script is only sourced when running the workflow with the
    `slurm` executor, i.e., with configuration file `nextflow_slurm.config`.
+1. `nextflow_small.config`: Nextflow configuration file to illustrate that
+   parameters can be overridden via the command line.
 
 
 ## How to use it?
