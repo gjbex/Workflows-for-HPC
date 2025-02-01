@@ -16,3 +16,5 @@ GNU parallel can use multiple input sources.
    `arg2.txt` as columns.
 1. `compute_single_file.sh`: compute the product of all pairs of values in
    a CSV files with two columns.
+1. `compute_header.sh`: compute the product of all paris of values in a
+   CSV file with column names.
