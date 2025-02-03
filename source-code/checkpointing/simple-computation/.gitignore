@@ -1,0 +1,9 @@
+# checkpointing files
+ckpt_platform-*
+dmtcp_restart_script*
+
+# workflow artifacts
+output.txt
+
+# Slurm output files
+slurm-[0-9]*.out
