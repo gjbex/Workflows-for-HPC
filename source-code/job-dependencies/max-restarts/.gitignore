@@ -1,0 +1,5 @@
+# workflow artifact
+output.txt
+
+# Slurm output files
+slurm-[0-9]*.out
