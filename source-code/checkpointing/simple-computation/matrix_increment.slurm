@@ -3,7 +3,7 @@
 #SBATCH --cluster=wice
 #SBATCH --nodes=1 --ntasks=1 --cpus-per-task=1
 #SBATCH --mem=1G
-#SBATCH --time 00:03:30
+#SBATCH --time=00:03:00
 
 # clean up all loaded modules
 module purge 2> /dev/null
@@ -26,18 +26,18 @@ echo "Follow-up job ID: $follow_up_job_id"
 PATH="$HOME/dmtcp/bin:$PATH"
 LD_LIBRARY_PATH="$HOME/dmtcp/lib:$LD_LIBRARY_PATH"
 
-# if this is the first time the job runs, start computation, else restart
-if [[ -e dmtcp_restart_script.sh ]]
-then
-    echo "restarting"
-    ./dmtcp_restart_script.sh
-else
+# if this is the first time the job runs, start computation, otherwise restart
+if [[ ! -e $DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh ]]
+then  # only first job
     echo "launching"
-    dmtcp_launch --interval $CKPT_INTERVAL  --checkpoint-open-files \
+    dmtcp_launch --interval $CKPT_INTERVAL  --checkpoint-open-files --ckptdir $DMTCP_CHECKPOINT_DIR \
         python matrix_increment.py --nr_rows $NR_ROWS --nr_cols $NR_COLS \
             --max_iters $MAX_ITERS
+else  # all follow-up jobs
+    echo "restarting"
+    $DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh
 fi
 
-# cancel follow-up job as either computation or restart finished
+# cancel follow-up job as either computation or restart finished, only last job
 echo "computation done, cancelling follow-up job $follow_up_job_id"
 scancel --cluster=$SLURM_CLUSTER_NAME $follow_up_job_id
