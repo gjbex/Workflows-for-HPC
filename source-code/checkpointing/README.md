@@ -11,3 +11,4 @@ facilities for checkpointing, you can use
 
 1. `simple-computation`: example of checkpointing a simple, single-threaded
    application using DMTCP.
+1. `openmp`: example of checkpointing an OpenMP application using DMTCP.
