@@ -1,3 +1,6 @@
+params.movie_delay = 50
+params.movie_loop = 0
+
 process CreatePlot {
     input:
     val beta
@@ -36,7 +39,7 @@ process Convert2Movie {
     script:
     """
     sorted_plots=\$(echo $plots | xargs -n1 | sort | xargs)
-    convert -delay 100 -loop 1 \$sorted_plots movie.gif
+    convert -delay ${params.movie_delay} -loop ${params.movie_loop} \$sorted_plots movie.gif
     """
 }
 
