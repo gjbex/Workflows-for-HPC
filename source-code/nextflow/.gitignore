@@ -1,0 +1,9 @@
+# ignore NextFlow work directory
+work/
+
+# ignore NextFlow cache directory
+.nextflow/
+
+# ignore NextFlow log files
+.nextflow.log
+.nextflow.log.*

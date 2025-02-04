@@ -1,0 +1,8 @@
+# ignore input and output directories
+input/
+output/
+
+# ignore Nextflow work directory, logs and report
+work/
+.nextflow/
+.nextflow.log*
