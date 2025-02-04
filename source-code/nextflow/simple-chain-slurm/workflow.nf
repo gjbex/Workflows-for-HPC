@@ -31,7 +31,7 @@ process CreateEnvironment {
     """
     source ${projectDir}/${params.conda_init_file}
     conda activate ${params.conda_environment_name}
-    if [[ ! \$? ]]
+    if [[ \$? -ne 0 ]]
     then
         conda env create -f ${projectDir}/conda_environment.yml
     fi
