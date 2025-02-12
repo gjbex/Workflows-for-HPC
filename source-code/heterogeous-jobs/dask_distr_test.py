@@ -12,20 +12,18 @@ def square(x):
 def get_hostname(i):
     import socket
     time.sleep(5)
-    return f'{i} on {socket.gethostname()'
+    return f'{i} on {socket.gethostname()}'
 
 if __name__ == '__main__':
     arg_parser = ArgumentParser(description='compute sum of squares and check '
                                             'task placement')
-    arg_parser.add_argument('--scheduler', help='scheduler host')
-    arg_parser.add_argument('--scheduler_port', default='8786',
-                            help='scheduler port to use')
+    arg_parser.add_argument('--scheduler-file', help='scheduler file')
     arg_parser.add_argument('--n', type=int, default=100,
                             help='number of terms in sum')
     arg_parser.add_argument('--verbose', action='store_true',
                             help='give verbose output')
     options = arg_parser.parse_args()
-    client = Client(f'{options.scheduler}:{options.scheduler_port}')
+    client = Client(scheduler_file=options.scheduler_file)
     if options.verbose:
         print(f'Client: {str(client)}', flush=True)
     futures = client.map(square, range(options.n))
@@ -44,4 +42,4 @@ if __name__ == '__main__':
             count[hostname] = 0
         count[hostname] += 1
     for hostname, nr_tasks in count.items():
-        print(f'{nr_tasks_d} tasks on {hostname}')
+        print(f'{nr_tasks:d} tasks on {hostname}')
