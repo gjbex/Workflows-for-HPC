@@ -1,6 +1,6 @@
-name: dask_heterogeous_job
+name: dask_heterogeneous_job
 channels:
   - conda-forge
 dependencies:
   - dask
-prefix: /home/gjb/mambaforge/envs/dask_heterogeous_job
+prefix: /home/gjb/mambaforge/envs/dask_heterogeneous_job
