@@ -9,20 +9,35 @@ help you to efficiently and conveniently run workflows on supercomputers.
 When you complete this training you will
 
 * be able to schedule tasks that run on a login node at given time(s);
-* be able to run SLURM jobs at given time(s);
+* be able to run Slurm jobs at given time(s);
 * know how to break down a computation that consists of multiple tasks that
-  require specific resources into a set of SLURM jobs using job dependencies;
+  require specific resources into a set of Slurm jobs using job dependencies;
 * understand how to use job dependencies to restart jobs that checkpoint their
   state;
-* understand how to SLURM job arrays to run multiple jobs with similar resource
+* understand how to Slurm job arrays to run multiple jobs with similar resource
   requirements;
 * be able to use either worker-ng or atools to simplify managing such parallel
   workflows;
-* use a workflow manager to run a workflow that consists of multiple tasks that
-  require specific resources.
+* use a workflow manager such as Nextflow to run a workflow that consists of
+  multiple tasks that require specific resources.
 
 
 ## Schedule
+
+Total duration: 3 hours
+
+| Subject                             | Duration |
+|-------------------------------------|----------|
+| Introduction and motivation         |  5 min   |
+| Scheduling tasks on a login node    | 10 min   |
+| Scheduling tasks with Slurm         | 10 min   |
+| Slurm job dependencies              | 15 min   |
+| Checkpointing and restarting jobs   | 15 min   |
+| Slurm job arrays                    | 20 min   |
+| atools                              | 20 min   |
+| Nextflow workflows                  | 40 min   |
+| Wrap-up                             |  5 min   |
+
 
 ## Training materials
 
@@ -40,7 +55,7 @@ Anyone who wants to run non-trivial workflows on HPC systems.
 
 You should be familiar with the basics of running jobs on an HPC system and
 know your way around the command line.  You should also be familiar with the
-basics of the SLURM job scheduler.
+basics of the Slurm job scheduler.
 
 
 ## Trainer(s)

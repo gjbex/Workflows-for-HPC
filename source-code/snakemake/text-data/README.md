@@ -3,7 +3,7 @@
 This workflow generates the following artifacts:
 
 - a number of ASCII text files
-- a file that lists the nanes of these text files;
+- a file that lists the names of these text files;
 - a CSV file that contains labels for each of the text files;
 - a ZIP file containing all the text files;
 - a TAR file containing all the text files;
