@@ -1,3 +1,6 @@
 *.exe
 *.pbs.o*
 *.pbs.e*
+slurm-*.out
+pi_100*.txt
+pi.slurm.log*
