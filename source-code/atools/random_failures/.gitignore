@@ -1,0 +1,4 @@
+# job artifacts
+out-*.txt
+slurm-*.out
+test.slurm.log*
