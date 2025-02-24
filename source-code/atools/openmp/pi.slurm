@@ -1,17 +1,16 @@
 #!/usr/bin/env -S bash -l
-#SBATCH --account=lpt2_syadmin
+#SBATCH --account=lpt2_sysadmin
 #SBATCH --cluster=wice
-#SBATCH --nodes=1 -ntasks=1 --cpus-per-task=4
+#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=4
 #SBATCH --time=00:15:00
 
 module purge 2> /dev/null
 module load atools
 
-export OMP_NUM_THREADS=
-source <(aenv --data data.csv)
-alog --state start
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-OUT_FILE="out_${x}_${y}.txt"
+source <(aenv --data data.csv --no_sniffer)
+alog --state start
 
 ./pi.exe $nr_points > pi_${nr_points}.txt
 
