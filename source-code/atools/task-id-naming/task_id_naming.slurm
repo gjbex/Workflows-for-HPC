@@ -15,7 +15,7 @@ echo "alpha = $alpha"
 echo "beta = $beta"
 echo "gamma = $gamma"
 
-result=$(( $alpha + $beta + $gamma ))
+result=$(echo "$alpha + $beta + $gamma" | bc)
 status=$?
 
 # if the computation succeeded, write output

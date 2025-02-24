@@ -1,0 +1,3 @@
+# job artifacts
+slurm-*.out
+single_column_data.slurm.log*

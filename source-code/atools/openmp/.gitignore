@@ -1,0 +1,5 @@
+pi.exe
+pi.o
+slurm-*.out
+pi_[1-9]0*.txt
+pi.slurm.log*
