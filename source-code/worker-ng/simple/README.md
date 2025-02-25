@@ -1,7 +1,6 @@
 # Simple
 
-Simple example of a typical worker-ng job.  It uses logging and names output
-files using the parameters of the job.
+Simple example of a typical worker-ng job.
 
 
 ## What is it?
