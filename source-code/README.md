@@ -16,5 +16,7 @@ Source code for the examples used in this training.
 1. `job-arrays`: example of using job arrays to run multiple similar,
    independent jobs.
 1. `atools`: examples of using atools to run multiple similar independent jobs.
+1. `worker-ng`: examples of using worker-ng to run multiple similar independent
+   tasks.
 1. `nextflow`: examples of using Nextflow to run workflows.
 1. `snakemake`: examples of using Snakemake to run workflows.
