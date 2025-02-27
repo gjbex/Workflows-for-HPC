@@ -7,5 +7,5 @@ data files work properly, as well as the environment variable
 
 ## What is it?
 
-1. `single_column_data.slurm`: Slurm job script to run the cmoputations.
+1. `single_column_data.slurm`: Slurm job script to run the computations.
 1. `data.csv`: CSV data file to use.
