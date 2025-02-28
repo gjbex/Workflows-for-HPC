@@ -19,7 +19,8 @@ fi
 
 # schedule follow-up job with one restart less
 follow_up_job_id=$( \
-    sbatch --export=ALL,RESTARTS_LEFT=$RESTARTS_LEFT --dependency=afternotok:$SLURM_JOB_ID jobscript.slurm \
+    sbatch --export=ALL,RESTARTS_LEFT=$RESTARTS_LEFT  \
+        --dependency=afternotok:$SLURM_JOB_ID jobscript.slurm \
         | grep -oP '\b\d+\b' \
 )
 echo "follow-up job scheduled: $follow_up_job_id, $(( $RESTARTS_LEFT + 1 )) restarts left"
