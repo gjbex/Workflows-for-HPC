@@ -58,6 +58,13 @@ know your way around the command line.  You should also be familiar with the
 basics of the Slurm job scheduler.
 
 
+## Level
+
+* Introductory: 30 %
+* Intermediate: 40 %
+* Advanced: 30 %
+
+
 ## Trainer(s)
 
 * Geert Jan Bex [geertjan.bex@uhasselt.be](mailto:geertjan.bex@uhasselt.be)
