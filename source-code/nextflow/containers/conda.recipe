@@ -1,0 +1,26 @@
+BootStrap: docker
+From: continuumio/miniconda3:latest
+Stage: build
+%files
+    {{ environment }} /environment.yml
+%post
+    cd /
+    conda install -c conda-forge conda-pack
+    conda env create -n env -f environment.yml
+    conda pack -n env -o env.tar.gz
+
+BootStrap: docker
+From:  debian:bullseye-slim
+Stage: runtime
+%files from build
+    /env.tar.gz /env.tar.gz
+%post
+    cd /
+    mkdir /env
+    cd /env
+    tar xzf /env.tar.gz
+    cd /
+    rm -rv /env.tar.gz
+    /env/bin/python /env/bin/conda-unpack
+%environment
+    export PATH=/env/bin/:$PATH
