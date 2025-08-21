@@ -1,0 +1,5 @@
+# directory containing the workflow's results
+results/
+
+# apptainer images
+*.sif
