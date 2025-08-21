@@ -20,3 +20,4 @@ jobs.
 1. `file-processing`: example of a workflow that processes a number of files.
 1. `modules`: example of a workflow that uses environment modules when running
    on a cluster.
+1. `containers`: example of a workflow that uses containers when running.
