@@ -21,3 +21,17 @@ jobs.
 1. `modules`: example of a workflow that uses environment modules when running
    on a cluster.
 1. `containers`: example of a workflow that uses containers when running.
+
+
+# Remote workflows
+
+As nextflow workflows can be executed directly from a GitHub repository, examples
+of this have to be hosted in their own, separate repositories.  The following
+workflows are available:
+* [`gjbex/Simple-nextflow`](https://github.com/gjbex/Simple-nextflow): simple
+  example of a workflow with three processes, each processing the output of the
+  previous one.  One process also requires a conda environment.
+* [`gjbex/Aggregate-nextflow`](https://github.com/gjbex/Aggregate-nextflow):
+  example of a workflow that defines two entry points, one that builds the
+  container image required to execute the pipeline, the other to actually
+  execute it.
