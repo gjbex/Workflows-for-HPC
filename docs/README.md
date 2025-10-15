@@ -57,6 +57,12 @@ You should be familiar with the basics of running jobs on an HPC system and
 know your way around the command line.  You should also be familiar with the
 basics of the Slurm job scheduler.
 
+For following along hands-on, you need
+* laptop or desktop with internet access and set up so you can connect to an
+  HPC system;
+* an account on an HPC system (e.g., VSC, CECI, ...);
+* compute credits if that is required to run jobs on the HPC system;
+
 
 ## Level
 
