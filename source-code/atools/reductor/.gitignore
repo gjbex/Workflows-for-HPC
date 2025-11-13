@@ -1,0 +1,4 @@
+text.txt
+*.bin
+data/
+processed-data/
