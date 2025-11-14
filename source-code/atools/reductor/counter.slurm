@@ -7,4 +7,6 @@
 start_value=$SLURM_ARRAY_TASK_ID
 end_value=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_TASK_STEP ))
 
+mkdir -p processed-data/
+
 parallel --max-procs $SLURM_NTASKS ./counter.py data/file-{}.txt processed-data/file-{}.bin ::: $(seq $start_value $end_value)
