@@ -20,7 +20,7 @@ if __name__ == '__main__':
     options = arg_parser.parse_args()
     count = {}
     with open(options.input, 'r') as in_file:
-        for line_nr in range(options.start):
+        for _ in range(options.start):
             _ = in_file.readline()
         for line_nr in range(options.start, options.end):
             line = in_file.readline().rstrip()
