@@ -25,6 +25,18 @@ reductor will aggregate the data into a single pickle file.
 1. `pickle_diff.py`: compare two pickle files, and print differences.
 
 
+## `areduce`
+
+When the processing is done, the results are in multiple pickle files.  To
+aggregate them into a single pickle file, use the `areduce` command.
+
+```bash
+$ areduce  -t 1-100  --pattern `processed-data/file-{t}.bin \
+      --empty pickle_empty.py  --reduce pickle_update.py    \
+      --out final_count.bin
+```
+
+
 ## How to use?
 
 To create a text file with 100 lines, 20 words per line:
