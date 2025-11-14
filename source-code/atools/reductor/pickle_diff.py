@@ -21,4 +21,4 @@ if __name__ == '__main__':
         if left_dict[word] != right_dict[word]:
             print(f'{word}: <{left_dict[word]} >{right_dict[word]}')
     for word in right_words - left_words:
-        print(f'< {word}: {right_dict[word]}')
+        print(f'> {word}: {right_dict[word]}')
