@@ -20,7 +20,7 @@ reductor will aggregate the data into a single pickle file.
 1. `pickle_empty.py`: create a pickle file for an empty `dict`.  Note that this
     script ignores all but the first positional argument, which is the output
     pickle file name.
-1. `pickle_update.py`: takes two tickle files as arguments, and add the
+1. `pickle_update.py`: takes two pickle files as arguments, and add the
    contents of the second to the first.
 1. `pickle_diff.py`: compare two pickle files, and print differences.
 
@@ -59,10 +59,10 @@ To combine the pickle files, first create one containing an empty `dict`:
 ```bash
 $ ./pickle_empty count_aggr.bin
 ```
-Next, aggragate all the pickle files into `count_aggr.bin`:
+Next, aggregate all the pickle files into `count_aggr.bin`:
 ```bash
 for file in $(ls count_[0-9]*.bin)
 do
     ./pickle_update.py count_aggr.bin $file
 done
-g``
+```
