@@ -14,7 +14,7 @@ if __name__ == '__main__':
         old_data = pickle.load(old_file)
     with open(options.new, 'rb') as new_file:
         new_data = pickle.load(new_file)
-    for word, count in new_data.iteritems():
+    for word, count in new_data.items():
         if word in old_data:
             old_data[word] += count
         else:
