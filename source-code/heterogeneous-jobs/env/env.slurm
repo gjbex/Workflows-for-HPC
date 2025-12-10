@@ -4,7 +4,7 @@
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=2G
-#SBATCH --hetgroup
+#SBATCH hetjob
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=1G
