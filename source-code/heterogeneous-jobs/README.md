@@ -10,3 +10,4 @@ running tasks that need to be run on different types of nodes.
 
 1. `dask`: a Dask job that starts a Dask scheduler and several Dask workers and
    runs a Dask job on them.
+1. `env`: check environment variables set by Slurm for heterogeneous jobs.
