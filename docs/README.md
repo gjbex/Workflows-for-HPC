@@ -93,6 +93,8 @@ If several of these items still feel difficult, the training will probably move
 too fast. In that case, it is better to first take a short introduction to
 Linux command-line use and basic Slurm job submission.
 
+### Software and access requirements
+
 For following along hands-on, you need
 * laptop or desktop with internet access and set up so you can connect to an
   HPC system;
