@@ -1,0 +1,152 @@
+schema_version = 2
+id = "workflows-for-hpc"
+title = "Workflows for HPC"
+content_language = "en"
+summary = """
+Running a job on an HPC system is typically not that hard, but executing a non-trivial workflow that involves both data movement and various computations is not so trivial. In this training you will get an overview of tools that can help you to efficiently and conveniently run workflows on supercomputers.
+"""
+
+[[learning_outcomes]]
+statement = "Be able to schedule tasks that run on a login node at given time(s)."
+competencies = ["workflow-management.schedule-local-tasks"]
+
+[[learning_outcomes]]
+statement = "Be able to run Slurm jobs at given time(s)."
+competencies = ["slurm.schedule-delayed-jobs"]
+
+[[learning_outcomes]]
+statement = "Know how to break down a computation that consists of multiple tasks that require specific resources into a set of Slurm jobs using job dependencies."
+competencies = ["slurm.job-dependencies"]
+
+[[learning_outcomes]]
+statement = "Understand how to use job dependencies to restart jobs that checkpoint their state."
+competencies = ["slurm.checkpoint-restart-workflows"]
+
+[[learning_outcomes]]
+statement = "Understand how to use Slurm job arrays to run multiple jobs with similar resource requirements."
+competencies = ["slurm.job-arrays"]
+
+[[learning_outcomes]]
+statement = "Be able to use either worker-ng or atools to simplify managing such parallel workflows."
+competencies = ["workflow-management.use-hpc-worker-tools"]
+
+[[learning_outcomes]]
+statement = "Use a workflow manager such as Nextflow to run a workflow that consists of multiple tasks that require specific resources."
+competencies = ["workflow-management.run-resource-aware-workflows"]
+
+[source]
+metadata_document = "docs/README.md"
+repository_url = "https://github.com/gjbex/Workflows-for-HPC/"
+website_url = "https://gjbex.github.io/Workflows-for-HPC/"
+license = "CC-BY-4.0"
+
+[delivery]
+duration_minutes = 180
+duration_kind = "fixed"
+session_count = 1
+target_session_duration_minutes = 180
+schedule_complete = true
+description = """
+Total duration: 3 hours
+"""
+
+[audience]
+description = """
+Anyone who wants to run non-trivial workflows on HPC systems.
+"""
+
+[prerequisites]
+summary = """
+You should be familiar with the basics of running jobs on an HPC system and know your way around the command line. You should also be familiar with the basics of the Slurm job scheduler. More concretely, participants should already be comfortable with the following: * logging in to an HPC system and working from the shell; * navigating directories, creating files, editing small scripts, and running commands; * transferring or organizing input and output files for batch jobs; * submitting a basic Slurm job with `sbatch`; * monitoring jobs and interpreting basic job states and output files; * understanding core Slurm concepts such as wall time, CPUs, memory, partition, and account; * reading and making small changes to short Bash scripts. Familiarity with simple Python scripts is helpful, but not strictly required. You do not need prior experience with Slurm job dependencies, job arrays, checkpoint/restart workflows, `atools`, `worker-ng`, Nextflow, or Snakemake. Those are part of the training itself.
+"""
+competencies = ["hpc.log-in-and-use-shell", "hpc.organize-job-inputs-and-outputs", "slurm.submit-batch-job", "slurm.monitor-job", "slurm.interpret-resource-requests", "shell.read-and-adapt-scripts"]
+
+[self_assessment]
+introduction = """
+If you can do most of the tasks below without looking up basic shell or Slurm syntax, you are likely ready for this training.
+"""
+tasks = [
+  "Log in to an HPC cluster and move to the directory where your job files are stored.",
+  "Submit a batch job and check whether it is queued, running, or finished.",
+  "Read a short Slurm job script and identify the requested time, CPUs, and memory.",
+  "Make a small change to a Bash script and run it again.",
+  "Understand that one job can produce files that a later job needs as input.",
+  "Locate the output or error file of a completed job.",
+  "Rerun a failed job after fixing a simple mistake in the script or input."
+]
+
+[requirements]
+software = [
+  "Laptop or desktop with internet access and set up so you can connect to an HPC system.",
+  "An account on an HPC system (e.g., VSC, CECI, ...).",
+  "Compute credits if that is required to run jobs on the HPC system."
+]
+
+[level]
+introductory_percent = 25
+intermediate_percent = 50
+advanced_percent = 25
+description = """
+For participants who already have basic HPC and Slurm experience, the material in this training is approximately These percentages describe the level of the workflow-management topics covered in the training, not the required entry level in shell usage or HPC job submission.
+"""
+
+[[materials]]
+kind = "slides"
+path = "workflow_for_HPC.pptx"
+
+[[materials]]
+kind = "source-code"
+path = "source-code"
+
+[[materials]]
+kind = "environment"
+path = "environment.yml"
+
+[[trainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[maintainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[sessions]]
+id = "session-1"
+title = "Session one"
+duration_minutes = 180
+
+[[sessions.items]]
+subject = "Introduction and motivation"
+duration_minutes = 5
+
+[[sessions.items]]
+subject = "Scheduling tasks on a login node"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Scheduling tasks with Slurm"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Slurm job dependencies"
+duration_minutes = 15
+
+[[sessions.items]]
+subject = "Checkpointing and restarting jobs"
+duration_minutes = 15
+
+[[sessions.items]]
+subject = "Slurm job arrays"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "atools"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Nextflow workflows"
+duration_minutes = 40
+
+[[sessions.items]]
+subject = "Wrap-up"
+duration_minutes = 5
