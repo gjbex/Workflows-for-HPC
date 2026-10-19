@@ -31,7 +31,7 @@ When the processing is done, the results are in multiple pickle files.  To
 aggregate them into a single pickle file, use the `areduce` command.
 
 ```bash
-$ areduce  -t 1-100  --pattern `processed-data/file-{t}.bin \
+$ areduce  -t 1-100  --pattern processed-data/file-{t}.bin  \
       --empty pickle_empty.py  --reduce pickle_update.py    \
       --out final_count.bin
 ```
