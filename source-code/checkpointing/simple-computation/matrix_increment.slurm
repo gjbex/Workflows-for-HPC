@@ -14,30 +14,70 @@ NR_ROWS=2000
 NR_COLS=2000
 MAX_ITERS=1200
 DMTCP_CHECKPOINT_DIR=dmtcp_checkpoints
+MAX_JOB_SUBMISSIONS=10
+
+# The initial job is number 1; each follow-up job receives the next number.
+job_number_text=${1:-1}
+if [[ ! $job_number_text =~ ^[1-9][0-9]*$ ]]
+then
+    echo "invalid job number: $job_number_text" >&2
+    exit 2
+fi
+job_number=$job_number_text
+
+if (( job_number > MAX_JOB_SUBMISSIONS ))
+then
+    echo "job number $job_number exceeds the limit of $MAX_JOB_SUBMISSIONS" >&2
+    exit 2
+fi
 
 # create checkpoints directory if it doesn't exist
-mkdir -p $DMTCP_CHECKPOINT_DIR
+if ! mkdir -p "$DMTCP_CHECKPOINT_DIR"
+then
+    echo "failed to create checkpoint directory: $DMTCP_CHECKPOINT_DIR" >&2
+    exit 1
+fi
 
-# submit a follow-up job that will only run if this didn't finish with exit status 0
-follow_up_job_id=$(sbatch --dependency=afternotok:$SLURM_JOB_ID matrix_increment.slurm | grep -oP '\b\d+\b')
-echo "Follow-up job ID: $follow_up_job_id"
+# Submit a bounded follow-up job.  Slurm cancels it automatically if this job
+# succeeds because its afternotok dependency can then never be satisfied.
+if (( job_number < MAX_JOB_SUBMISSIONS ))
+then
+    next_job_number=$((job_number + 1))
+    if ! submission_output=$( \
+        sbatch --parsable \
+            --dependency="afternotok:$SLURM_JOB_ID" \
+            --kill-on-invalid-dep=yes \
+            matrix_increment.slurm "$next_job_number" \
+    )
+    then
+        echo "failed to submit follow-up job" >&2
+        exit 1
+    fi
+    follow_up_job_id=${submission_output%%;*}
+    echo "Follow-up job $next_job_number/$MAX_JOB_SUBMISSIONS: $follow_up_job_id"
+else
+    echo "Final permitted job $job_number/$MAX_JOB_SUBMISSIONS; no follow-up submitted"
+fi
 
 # set environment for dmtcp
 PATH="$HOME/dmtcp/bin:$PATH"
 LD_LIBRARY_PATH="$HOME/dmtcp/lib:$LD_LIBRARY_PATH"
 
 # if this is the first time the job runs, start computation, otherwise restart
-if [[ ! -e $DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh ]]
+if [[ ! -e "$DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh" ]]
 then  # only first job
     echo "launching"
-    dmtcp_launch --interval $CKPT_INTERVAL  --checkpoint-open-files --ckptdir $DMTCP_CHECKPOINT_DIR \
-        python matrix_increment.py --nr_rows $NR_ROWS --nr_cols $NR_COLS \
-            --max_iters $MAX_ITERS
+    dmtcp_launch --interval "$CKPT_INTERVAL" --checkpoint-open-files \
+        --ckptdir "$DMTCP_CHECKPOINT_DIR" \
+        python matrix_increment.py --nr_rows "$NR_ROWS" --nr_cols "$NR_COLS" \
+            --max_iters "$MAX_ITERS"
+    computation_status=$?
 else  # all follow-up jobs
     echo "restarting"
-    $DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh
+    "$DMTCP_CHECKPOINT_DIR/dmtcp_restart_script.sh"
+    computation_status=$?
 fi
 
-# cancel follow-up job as either computation or restart finished, only last job
-echo "computation done, cancelling follow-up job $follow_up_job_id"
-scancel --cluster=$SLURM_CLUSTER_NAME $follow_up_job_id
+# Preserve the computation's status for the afternotok dependency.
+echo "DMTCP command exited with status $computation_status"
+exit "$computation_status"
