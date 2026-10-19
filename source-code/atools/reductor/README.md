@@ -57,7 +57,7 @@ $ ./counter.py text.txt --start 10 --end 20 count_02.bin
 
 To combine the pickle files, first create one containing an empty `dict`:
 ```bash
-$ ./pickle_empty count_aggr.bin
+$ ./pickle_empty.py count_aggr.bin
 ```
 Next, aggregate all the pickle files into `count_aggr.bin`:
 ```bash
