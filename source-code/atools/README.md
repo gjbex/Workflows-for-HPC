@@ -12,3 +12,5 @@ Some examples of how to use atools.
 1. `openmp`: example of running an array job of an OpenMP application.
 1. `mpi`: example of running an array job of an MPI application.
 1. `random_failures`: example of an atools job with failing work items.
+1. `reductor`: example of a non-trivial reductor script, as well as multi-level
+   parallelism using GNU parallel.
